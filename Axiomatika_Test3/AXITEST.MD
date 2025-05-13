@@ -1,0 +1,1 @@
+Hibernate-Core 5.5.7.Final

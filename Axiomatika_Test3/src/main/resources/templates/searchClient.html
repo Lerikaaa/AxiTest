@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск клиента</title>
+    <link rel="stylesheet" href="{{ href('/styles.css') }}"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Система кредитования</h1>
+        <nav>
+            <ul>
+                <li><a href="/applications/apply.html">Оформить заявку</a></li>
+                <li><a href="/clients/clients.html">Список клиентов</a></li>
+                <li><a href="/clients/searchClient.html">Поиск клиента</a></li>
+                <li><a href="/applications/applications.html">Список заявок</a></li>
+                <li><a href="/agreements/agreements.html">Список кредитных договоров</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Поиск клиента</h1>
+        <form action="/clients/searchClient.html" method="post">
+        <label for="search-phone">Телефон:</label>
+            <input type="text" id="search-phone" name="phone">
+
+            <label for="search-fio">ФИО:</label>
+            <input type="text" id="search-fio" name="fio">
+
+            <label for="search-passport">Паспорт:</label>
+            <input type="text" id="search-passport" name="passport">
+
+            <button type="submit">Поиск</button>
+        </form>
+        <h2>Результаты поиска:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ФИО</th>
+                    <th>Паспорт</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>{{client.fullName}}</td>
+                <td>{{client.passport}}</td>
+                <td>{{client.phone}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

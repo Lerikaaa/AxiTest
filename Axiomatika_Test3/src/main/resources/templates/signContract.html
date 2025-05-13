@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подписание договора займа</title>
+    <link rel="stylesheet" href="{{ href('/styles.css') }}"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Система кредитования</h1>
+        <nav>
+            <ul>
+                <li><a href="/applications/apply.html">Оформить заявку</a></li>
+                <li><a href="/clients/clients.html">Список клиентов</a></li>
+                <li><a href="/clients/searchClient.html">Поиск клиента</a></li>
+                <li><a href="/applications/applications.html">Список заявок</a></li>
+                <li><a href="/agreements/agreements.html">Список кредитных договоров</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Подписание договора займа</h1>
+        <p>Данные из заявки:</p>
+        <ul>
+            <li>ФИО: <strong>{{application.client.fullName}}</strong></li>
+            <li>Паспорт: <strong>{{application.client.passport}}</strong></li>
+            <li>Сумма кредита: <strong>{{application.approvedAmount}}</strong> руб. </li>
+            <li>Дата подписания: <strong>{{signingDate}}</strong></li>
+            <li>Статус подписи: <strong>{{agreement.signatureStatus}}</strong></li>
+        </ul>
+        {% if not agreement.isSigned %}
+        <form action="/agreements/{{agreement.agreementId}}/signContract.html" method="post">
+            <button type="submit">Подписать</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

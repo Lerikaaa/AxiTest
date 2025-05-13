@@ -1,0 +1,112 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #ffffff; /* Цвет фона документов */
+    color: #ffffff; /* Цвет текста по умолчанию */
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 90%; /* Ширина контейнера на 90% */
+    max-width: 900px; /* Максимальная ширина для больших экранов */
+    margin: 0 auto; /* Центрирование контейнера */
+    margin-bottom: 30px;
+    background-color: #6D6875; /* Белый фон для контейнера */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center; /* Центрирование текста заголовка */
+    color: #FFCDB2; /* Цвет заголовка */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center; /* Центрирование навигации */
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #E5989B; /* Цвет текста кнопок */
+    border-radius: 15px;
+    padding: 10px 15px;
+    background-color: #FFCDB2; /* Цвет кнопок */
+}
+
+nav a:hover {
+    background-color: #B5838D; /* Цвет кнопок при наведении */
+    color: #FFB4A2; /* Цвет текста кнопок при наведении */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    color: #fff; /* Цвет текста меток */
+}
+
+input, select, textarea {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #FFCDB2; /* Цвет кнопок */
+    color: #E5989B; /* Цвет текста кнопок */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #B5838D; /* Цвет кнопок при наведении */
+    color: #FFB4A2; /* Цвет текста кнопок при наведении */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    border-radius: 10px;
+}
+
+th {
+    background-color: #FFCDB2; /* Цвет заголовков таблицы */
+    color: #E5989B; /* Цвет текста заголовков таблицы */
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0; /* Цвет при наведении на строку */
+}
+
+h3 {
+    margin-top: 20px;
+    color: #FFCDB2; /* Цвет заголовков секций */
+}
+
+select {
+    border-radius: 10px;
+    padding: 10px;
+}

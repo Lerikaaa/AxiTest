@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заявку</title>
+    <link rel="stylesheet" href="{{ href('/styles.css') }}"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Система кредитования</h1>
+        <nav>
+            <ul>
+                <li><a href="/applications/apply.html">Оформить заявку</a></li>
+                <li><a href="/clients/clients.html">Список клиентов</a></li>
+                <li><a href="/clients/searchClient.html">Поиск клиента</a></li>
+                <li><a href="/applications/applications.html">Список заявок</a></li>
+                <li><a href="/agreements/agreements.html">Список кредитных договоров</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h1>Оформить заявку на кредит</h1>
+        <form action="/applications/decision.html" method="post">
+            <label for="fio">ФИО:</label>
+            <input type="text" id="fio" name="fio" required>
+
+            <label for="passport">Паспорт:</label>
+            <input type="text" id="passport" name="passport" required>
+
+            <label for="gender">Пол:</label>
+            <select id="gender" name="gender">
+                <option value="male">Мужской</option>
+                <option value="female">Женский</option>
+            </select>
+
+            <label for="maritalStatus">Семейное положение:</label>
+            <select id="maritalStatus" name="maritalStatus">
+                <option value="single">Холост</option>
+                <option value="married">Женат/Замужем</option>
+                <option value="divorced">В разводе</option>
+            </select>
+
+            <label for="residence">Адрес проживания:</label>
+            <input type="text" id="residence" name="residence" required>
+
+            <label for="registration">Адрес регистрации:</label>
+            <input type="text" id="registration" name="registration" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <h3>Сведения о занятости:</h3>
+            <label for="workPeriod">Период работы:</label>
+            <input type="text" id="workPeriod" name="workPeriod" required>
+
+            <label for="position">Должность:</label>
+            <input type="text" id="position" name="position" required>
+
+            <label for="organization">Название организации:</label>
+            <input type="text" id="organization" name="organization" required>
+
+            <label for="loanAmount">Сумма желаемого кредита:</label>
+            <input type="number" id="loanAmount" name="loanAmount" required>
+
+            <label for="additionalInfo">Дополнительная информация:</label>
+            <textarea id="additionalInfo" name="additionalInfo"></textarea>
+
+            <button type="submit">Отправить заявку</button>
+        </form>
+    </div>
+</body>
+</html>
