@@ -77,9 +77,4 @@ public class LoanAgreementController {
         LoanAgreement agreement = loanAgreementService.signAgreement(agreementId);
         return getSignContract(agreement.getApplication().getApplicationId(), model);
     }
-
-    @DeleteMapping("/{id}")
-    public void deleteAgreement(@PathVariable Long id) {
-        loanAgreementService.deleteAgreement(id);
-    }
 }

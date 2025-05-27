@@ -2,8 +2,7 @@ package org.example.myapp.service;
 
 import org.example.myapp.dto.ApplicationDto;
 import org.example.myapp.model.Client;
-import org.example.myapp.repository.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.myapp.repository.ClientRepositoryH;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -12,23 +11,22 @@ import java.util.List;
 @Service
 public class ClientService {
 
-    @Autowired
-    private ClientRepository clientRepository;
+    ClientRepositoryH clientRepositoryH = new ClientRepositoryH();
 
     public List<Client> getAllClients() {
-        return clientRepository.findAll();
+        return clientRepositoryH.findAll();
     }
 
     public Client getClientById(Long id) {
-        return (Client) clientRepository.findById(id).orElse(null);
+        return (Client) clientRepositoryH.findById(id).orElse(null);
     }
 
     public Client saveClient(Client client) {
-        return (Client) clientRepository.save(client);
+        return (Client) clientRepositoryH.save(client);
     }
 
     public Client saveClientFromApplication(ApplicationDto applicationDto){
-        var search = clientRepository.findClientByPhone(applicationDto.getPhone());
+        var search = new ClientRepositoryH().findClientByPhone(applicationDto.getPhone());
 
         if (search.isPresent()){
             return search.get();
@@ -43,11 +41,7 @@ public class ClientService {
         client.setRegistrationAddress(applicationDto.getRegistration());
         client.setPhone(applicationDto.getPhone());
 
-        return clientRepository.save(client);
-    }
-
-    public void deleteClient(Long id) {
-        clientRepository.deleteById(id);
+        return clientRepositoryH.save(client);
     }
 
     public List<Client> searchClient(String phone, String fio, String passport) {
@@ -62,19 +56,19 @@ public class ClientService {
         }
         
         if (!ObjectUtils.isEmpty(phone) && !ObjectUtils.isEmpty(fio) && !ObjectUtils.isEmpty(passport)){
-            return clientRepository.findClientByPhoneLikeAndFullNameLikeAndPassportLike(phone, fio, passport);
+            return clientRepositoryH.findClientByPhoneLikeAndFullNameLikeAndPassportLike(phone, fio, passport);
         } else if (!ObjectUtils.isEmpty(phone) && !ObjectUtils.isEmpty(fio) && ObjectUtils.isEmpty(passport)) {
-            return clientRepository.findClientByPhoneLikeAndFullNameLike(phone, fio);
+            return clientRepositoryH.findClientByPhoneLikeAndFullNameLike(phone, fio);
         } else if(!ObjectUtils.isEmpty(phone) && ObjectUtils.isEmpty(fio) && !ObjectUtils.isEmpty(passport)){
-            return clientRepository.findClientByPhoneLikeAndPassportLike(phone, passport);
+            return clientRepositoryH.findClientByPhoneLikeAndPassportLike(phone, passport);
         } else if (ObjectUtils.isEmpty(phone) && !ObjectUtils.isEmpty(fio) && !ObjectUtils.isEmpty(passport)) {
-            return clientRepository.findClientByFullNameLikeAndPassportLike(fio, passport);
+            return clientRepositoryH.findClientByFullNameLikeAndPassportLike(fio, passport);
         } else if (!ObjectUtils.isEmpty(phone) && ObjectUtils.isEmpty(fio) && ObjectUtils.isEmpty(passport)) {
-            return clientRepository.findClientByPhoneLike(phone);
+            return clientRepositoryH.findClientByPhoneLike(phone);
         } else if (ObjectUtils.isEmpty(phone) && !ObjectUtils.isEmpty(fio) && ObjectUtils.isEmpty(passport)) {
-            return clientRepository.findClientByFullNameLike(fio);
+            return clientRepositoryH.findClientByFullNameLike(fio);
         } else if (ObjectUtils.isEmpty(phone) && ObjectUtils.isEmpty(fio) && !ObjectUtils.isEmpty(passport)) {
-            return clientRepository.findClientByPassportLike(passport);
+            return clientRepositoryH.findClientByPassportLike(passport);
         } else{
             return List.of();
         }

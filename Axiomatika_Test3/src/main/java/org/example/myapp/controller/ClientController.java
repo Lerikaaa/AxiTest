@@ -1,18 +1,14 @@
 package org.example.myapp.controller;
 
-import org.example.myapp.dto.ApplicationDto;
 import org.example.myapp.dto.SearchClientDto;
 import org.example.myapp.model.Client;
-import org.example.myapp.model.LoanApplication;
 import org.example.myapp.service.ClientService;
-import org.springframework.beans.CachedIntrospectionResults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -36,11 +32,6 @@ public class ClientController {
     @PostMapping
     public Client createClient(@RequestBody Client client) {
         return clientService.saveClient(client);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteClient(@PathVariable Long id) {
-        clientService.deleteClient(id);
     }
 
     @GetMapping("/search")

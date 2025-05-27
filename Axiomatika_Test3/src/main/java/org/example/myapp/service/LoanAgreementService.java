@@ -1,8 +1,7 @@
 package org.example.myapp.service;
 
 import org.example.myapp.model.LoanAgreement;
-import org.example.myapp.repository.LoanAgreementRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.myapp.repository.LoanAgreementRepositoryH;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -11,23 +10,18 @@ import java.util.List;
 @Service
 public class LoanAgreementService {
 
-    @Autowired
-    private LoanAgreementRepository loanAgreementRepository;
+    LoanAgreementRepositoryH loanAgreementRepositoryH = new LoanAgreementRepositoryH();
 
     public List<LoanAgreement> getAllAgreements() {
-        return loanAgreementRepository.findAll();
+        return loanAgreementRepositoryH.findAll();
     }
 
     public LoanAgreement getAgreementById(Long id) {
-        return loanAgreementRepository.findById(id).orElse(null);
+        return loanAgreementRepositoryH.findById(id).orElse(null);
     }
 
     public LoanAgreement saveAgreement(LoanAgreement agreement) {
-        return loanAgreementRepository.save(agreement);
-    }
-
-    public void deleteAgreement(Long id) {
-        loanAgreementRepository.deleteById(id);
+        return loanAgreementRepositoryH.save(agreement);
     }
 
     public LoanAgreement signAgreement(Long id) {
@@ -36,10 +30,10 @@ public class LoanAgreementService {
         agreement.setSigningDate(LocalDateTime.now());
         agreement.setSignatureStatus("Подписан");
 
-        return loanAgreementRepository.save(agreement);
+        return loanAgreementRepositoryH.save(agreement);
     }
 
     public LoanAgreement getAgreementByApplicationId(Long id) {
-        return loanAgreementRepository.findLoanAgreementByApplicationApplicationId(id);
+        return loanAgreementRepositoryH.findLoanAgreementByApplicationApplicationId(id);
     }
 }

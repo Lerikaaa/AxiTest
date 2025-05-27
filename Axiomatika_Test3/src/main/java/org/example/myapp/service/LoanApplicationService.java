@@ -4,8 +4,9 @@ import org.example.myapp.dto.ApplicationDto;
 import org.example.myapp.model.Client;
 import org.example.myapp.model.LoanAgreement;
 import org.example.myapp.model.LoanApplication;
-import org.example.myapp.repository.LoanAgreementRepository;
-import org.example.myapp.repository.LoanApplicationRepository;
+import org.example.myapp.repository.LoanAgreementRepositoryH;
+import org.example.myapp.repository.LoanApplicationRepositoryH;
+import org.example.myapp.repository.LoanApplicationRepositoryH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +18,15 @@ import java.util.Random;
 @Service
 public class LoanApplicationService {
 
-    @Autowired
-    private LoanApplicationRepository loanApplicationRepository;
-    @Autowired
-    private LoanAgreementRepository loanAgreementRepository;
+    private LoanApplicationRepositoryH loanApplicationRepositoryH = new LoanApplicationRepositoryH();
+    private LoanAgreementRepositoryH loanAgreementRepositoryH = new LoanAgreementRepositoryH();
 
     public List<LoanApplication> getAllApplications() {
-        return loanApplicationRepository.findAll();
+        return loanApplicationRepositoryH.findAll();
     }
 
     public LoanApplication getApplicationById(Long id) {
-        return loanApplicationRepository.findById(id).orElse(null);
+        return loanApplicationRepositoryH.findById(id).orElse(null);
     }
 
     public LoanApplication createApplicationFromForm(Client client, ApplicationDto applicationDto){
@@ -56,18 +55,14 @@ public class LoanApplicationService {
             application.setDecisionStatus("Отказано");
         }
 
-        LoanApplication save = loanApplicationRepository.save(application);
+        LoanApplication save = loanApplicationRepositoryH.save(application);
 
         if (approved){
             LoanAgreement agreement = new LoanAgreement();
             agreement.setSignatureStatus("Не подписан");
             agreement.setApplication(save);
-            loanAgreementRepository.save(agreement);
+            loanAgreementRepositoryH.save(agreement);
         }
         return save;
-    }
-
-    public void deleteApplication(Long id) {
-        loanApplicationRepository.deleteById(id);
     }
 }

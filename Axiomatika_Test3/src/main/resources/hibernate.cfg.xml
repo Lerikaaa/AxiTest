@@ -1,0 +1,12 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/lendingDB</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">Baksuslik</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+    </session-factory>
+</hibernate-configuration>
+

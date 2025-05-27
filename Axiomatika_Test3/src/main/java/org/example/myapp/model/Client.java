@@ -8,6 +8,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "client_id", nullable = false)
     private Long clientId; // Уникальный идентификатор клиента
 
     @Column(name = "full_name", nullable = false)

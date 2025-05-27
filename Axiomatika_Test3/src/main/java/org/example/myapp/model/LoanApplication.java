@@ -10,6 +10,7 @@ public class LoanApplication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "application_id")
     private Long applicationId; // Уникальный идентификатор заявки
 
     @ManyToOne

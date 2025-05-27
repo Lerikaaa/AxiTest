@@ -47,9 +47,4 @@ public class LoanApplicationController {
         model.addAttribute("application", application);
         return "decision";
     }
-
-    @DeleteMapping("/{id}")
-    public void deleteApplication(@PathVariable Long id) {
-        loanApplicationService.deleteApplication(id);
-    }
 }

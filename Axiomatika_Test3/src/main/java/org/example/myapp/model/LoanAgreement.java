@@ -1,12 +1,8 @@
 package org.example.myapp.model;
 
 import javax.persistence.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Entity
 @Table(name = "loan_agreements")
@@ -14,6 +10,7 @@ public class LoanAgreement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "agreement_id", nullable = false)
     private Long agreementId; // Уникальный идентификатор кредитного договора
 
     @ManyToOne
